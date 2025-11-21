@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+
+    <!-- Metas -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Cloudrify Digital">
+    <meta name="description" content="Cloudrify Digital">
+    <meta name="author" content="">
+
+    <!-- Title  -->
+    <title>Cloudrify Digital</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://cloudrifydigital.com.au/assets/images/logo-cloud.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="assets/css/plugins.css">
+
+    <!-- Core Style Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Floating Action Buttons for Contact */
+        .contact-fab-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-fab {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-fab i {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-fab:hover i {
+            transform: rotate(10deg);
+        }
+
+        /* Theme-aware colors */
+        .contact-fab.whatsapp {
+            background-color: var(--theme-whatsapp, #25D366);
+            color: var(--theme-icon-color, #fff);
+        }
+        .contact-fab.whatsapp:hover {
+            background-color: var(--theme-whatsapp-hover, #128C7E);
+        }
+        .contact-fab.email {
+            background-color: var(--theme-email, #e4bc61);
+            color: var(--theme-email-text, #131313);
+        }
+        .contact-fab.email:hover {
+            background-color: var(--theme-email-hover, #ffda85);
+        }
+
+        /* Dark mode */
+        [data-theme="dark"] {
+            --theme-whatsapp: #1a9247;
+            --theme-whatsapp-hover: #0d7a3c;
+            --theme-email: #e4bc61;
+            --theme-email-hover: #c9a654;
+            --theme-email-text: #000000;
+            --theme-icon-color: #ffffff;
+        }
+
+        /* Light mode */
+        [data-theme="light"] {
+            --theme-whatsapp: #25D366;
+            --theme-whatsapp-hover: #128C7E;
+            --theme-email: #e4bc61;
+            --theme-email-hover: #ffda85;
+            --theme-email-text: #131313;
+            --theme-icon-color: #ffffff;
+        }
+
+        /* Remove Tawk.to chat widget */
+        .tawk-fab-container {
+            display: none !important;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .contact-fab-container {
+                bottom: 20px;
+                right: 20px;
+                gap: 12px;
+            }
+            .contact-fab {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+
+        /* Small mobile devices */
+        @media screen and (max-width: 480px) {
+            .contact-fab-container {
+                bottom: 15px;
+                right: 15px;
+                gap: 10px;
+            }
+            .contact-fab {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+
+        /* Tawk.to Custom FAB */
+        .tawk-fab-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .tawk-fab {
+            width: 60px;
+            height: 60px;
+            background-color: #e4bc61; /* Accent color */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(228, 188, 97, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: tawk-pulse 2.5s infinite;
+        }
+
+        .tawk-fab:hover { transform: scale(1.1); animation-play-state: paused; }
+        .tawk-fab i { font-size: 28px; color: #131313; }
+        @keyframes tawk-pulse { 0% { box-shadow: 0 4px 20px rgba(228, 188, 97, 0.25); } 50% { box-shadow: 0 8px 35px rgba(228, 188, 97, 0.4); } 100% { box-shadow: 0 4px 20px rgba(228, 188, 97, 0.25); } }
+
+        /* Sticky Side Menu */
+        .sticky-side-menu {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 999;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: none;
+            border-radius: 15px 0 0 15px;
+            padding: 20px 10px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .sticky-side-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 5px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: block;
+            position: relative;
+        }
+
+        .sticky-side-menu a:hover {
+            color: #e4bc61;
+            transform: translateX(-3px);
+        }
+
+        .sticky-side-menu a::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 0;
+            background-color: #e4bc61;
+            transition: height 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .sticky-side-menu a:hover::before {
+            height: 100%;
+        }
+
+        /* Mobile Slider for Works Section */
+        @media (max-width: 991px) {
+            .works.thecontainer {
+                display: block;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+            .works .panel {
+                width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
+
+</head>
+
+<body class="home-main-crev main-bg">
+
+
+
+    <!-- ==================== Start Loading ==================== -->
+
+    <div class="loader-wrap">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+
+        <div class="loader-wrap-heading">
+            <div class="load-text">
+                <span>L</span>
+                <span>o</span>
+                <span>a</span>
+                <span>d</span>
+                <span>i</span>
+                <span>n</span>
+                <span>g</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== End Loading ==================== -->
+
+
+    <div class="cursor"></div>
+
+
+    <!-- ==================== Start progress-scroll-button ==================== -->
+
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+
+    <!-- ==================== End progress-scroll-button ==================== -->
+
+
+    <div id="smooth-wrapper">
+        <!-- ==================== Start Navbar ==================== -->
+
+        <nav class="navbar navbar-expand-lg bord main-bg">
+            <div class="container">
+
+                <!-- Logo -->
+                <a class="logo icon-img-100" href="/">
+                    <img src="assets/images/logo-cloud.png" class="w-75" alt="logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="icon-bar"><i class="fas fa-bars"></i></span>
+                </button>
+
+                <!-- navbar links -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " data-toggle="dropdown" href="/" role="button" aria-haspopup="true"
+                                aria-expanded="false"><span class="rolling-text">Home</span></a>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" data-toggle="dropdown" href="about-us.html" role="button"
+                                aria-haspopup="true" aria-expanded="false"><span class="rolling-text">About
+                                    Us</span></a>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " data-toggle="dropdown" href="services.html" role="button"
+                                aria-haspopup="true" aria-expanded="false"><span
+                                    class="rolling-text">Services</span></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact-us.html"><span class="rolling-text">Contact
+                                    US</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ==================== End Navbar ==================== -->
+        <div id="smooth-content">
+
+            <main class="main-bg">
+                <!-- ==================== Start Slider ==================== -->
+                <header class="crev-header">
+                    <div class="container mt-80">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="caption">
+                                    <h1><span style="color: #e4bc61 !important;">Start With</span> <br> <span
+                                            class="stroke">Cloudrify</span> <span style="color: #e4bc61;"> Digital
+                                        </span></h1>
+                                    <div class="row mt-30">
+                                        <div class="col-lg-5">
+                                            <div class="text">
+                                                <p>We specialise in building a website that caters for your needs as a
+                                                    business. However big or small the project is, we will get it done!
+                                                </p>
+                                            </div>
+                                            <div class="crv-butn-vid mt-30">
+                                                <a href="page-contact.html" class="vid">
+                                                    <span class="text sub-title me-3">Contact Us </span>
+                                                    <span class="icon main-colorbg4 ms-3">
+                                                        <svg class="default" width="13" height="20" viewBox="0 0 13 20"
+                                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M0 20L13 10L0 0V20Z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="md-hide">
+                                    <a href="page-about.html" class="hover-this">
+                                        <div class="circle-button in-bord hover-anim">
+                                            <div class="rotate-circle fz-30 text-u">
+                                                <svg class="textcircle" viewBox="0 0 500 500">
+                                                    <defs>
+                                                        <path id="textcircle"
+                                                            d="M250,400 a150,150 0 0,1 0,-300a150,150 0 0,1 0,300Z">
+                                                        </path>
+                                                    </defs>
+                                                    <text>
+                                                        <textPath xlink:href="#textcircle" textLength="900">Explore More
+                                                            -
+                                                            Explore More -</textPath>
+                                                    </text>
+                                                </svg>
+                                            </div>
+                                            <div class="arrow">
+                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M13.922 4.5V11.8125C13.922 11.9244 13.8776 12.0317 13.7985 12.1108C13.7193 12.1899 13.612 12.2344 13.5002 12.2344C13.3883 12.2344 13.281 12.1899 13.2018 12.1108C13.1227 12.0317 13.0783 11.9244 13.0783 11.8125V5.51953L4.79547 13.7953C4.71715 13.8736 4.61092 13.9176 4.50015 13.9176C4.38939 13.9176 4.28316 13.8736 4.20484 13.7953C4.12652 13.717 4.08252 13.6108 4.08252 13.5C4.08252 13.3892 4.12652 13.283 4.20484 13.2047L12.4806 4.92188H6.18765C6.07577 4.92188 5.96846 4.87743 5.88934 4.79831C5.81023 4.71919 5.76578 4.61189 5.76578 4.5C5.76578 4.38811 5.81023 4.28081 5.88934 4.20169C5.96846 4.12257 6.07577 4.07813 6.18765 4.07812H13.5002C13.612 4.07813 13.7193 4.12257 13.7985 4.20169C13.8776 4.28081 13.922 4.38811 13.922 4.5Z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-img">
+                        <img src="assets/imgs/home/1.jpg" class="rounded-3" alt="">
+                    </div>
+                    <div class="bg-pattern bg-img" data-background="assets/imgs/patterns/graph.png"></div>
+                </header>
+                <!-- ==================== End Slider ==================== -->
+
+                <!-- ==================== Start about ==================== -->
+                <section class="about-intro section-padding">
+                    <div class="container">
+                        <div class="row mb-80">
+                            <div class="col-lg-5">
+                                <div class="sec-lg-head md-mb30">
+                                    <h6 class="dot-titl-non mb-15 wow fadeIn">OUR BENEFITS</h6>
+                                    <h2 class="d-rotate wow">
+                                        <span class="rotate-text">At Cloudrify Digital, We Build Digital Experiences
+                                            That Elevate Your Brand.</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-2 valign">
+                                <div class="text">
+                                    <p class="d-slideup wow">
+                                        <span class="sideup-text">
+                                            <span class="up-text">We believe in blending creativity with technology to
+                                                deliver clean,</span>
+                                        </span>
+                                        <span class="sideup-text">
+                                            <span class="up-text">minimal, and impactful digital experiences. Our team
+                                                is dedicated to</span>
+                                        </span>
+                                        <span class="sideup-text">
+                                            <span class="up-text">excellence, transparency, and long-term client
+                                                success.</span>
+                                        </span>
+                                    </p>
+                                    <div class="vew-all mt-50 ml-30 wow fadeIn" data-wow-delay=".8s">
+                                        <a href="#contact">Get In Touch
+                                            <span>
+                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M13.922 4.5V11.8125C13.922 11.9244 13.8776 12.0317 13.7985 12.1108C13.7193 12.1899 13.612 12.2344 13.5002 12.2344C13.3883 12.2344 13.281 12.1899 13.2018 12.1108C13.1227 12.0317 13.0783 11.9244 13.0783 11.8125V5.51953L4.79547 13.7953C4.71715 13.8736 4.61092 13.9176 4.50015 13.9176C4.38939 13.9176 4.28316 13.8736 4.20484 13.7953C4.12652 13.717 4.08252 13.6108 4.08252 13.5C4.08252 13.3892 4.12652 13.283 4.20484 13.2047L12.4806 4.92188H6.18765C6.07577 4.92188 5.96846 4.87743 5.88934 4.79831C5.81023 4.71919 5.76578 4.61189 5.76578 4.5C5.76578 4.38811 5.81023 4.28081 5.88934 4.20169C5.96846 4.12257 6.07577 4.07813 6.18765 4.07812H13.5002C13.612 4.07813 13.7193 4.12257 13.7985 4.20169C13.8776 4.28081 13.922 4.38811 13.922 4.5Z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 rest">
+                                <div class="imgs md-mb50">
+                                    <div class="img1">
+                                        <div class="o-hidden">
+                                            <div class="imago wow">
+                                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&h=840&fit=crop&q=80"
+                                                    alt="Modern Office Workspace">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="img2">
+                                        <div class="o-hidden">
+                                            <div class="imago wow">
+                                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=840&fit=crop&q=80"
+                                                    alt="Team Collaboration">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 valign rest">
+                                <div class="cont">
+                                    <h2 class="d-rotate wow">
+                                        <span class="rotate-text">Simplifying The Digital World For Business
+                                            Growth.</span>
+                                    </h2>
+                                    <div class="feat mt-80">
+                                        <div class="item-flex d-flex align-items-center mb-50 wow fadeIn"
+                                            data-wow-delay=".4s">
+                                            <div>
+                                                <div class="icon-img-50">
+                                                    <img src="assets/images/2.png" alt="Excellence Icon">
+                                                </div>
+                                            </div>
+                                            <div class="cont ml-30">
+                                                <h6>Excellence & Quality</h6>
+                                                <p class="fz-15">We deliver sleek, high-performing websites designed to
+                                                    empower businesses of all sizes to grow online with cutting-edge
+                                                    solutions.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="item-flex d-flex align-items-center wow fadeIn"
+                                            data-wow-delay=".8s">
+                                            <div>
+                                                <div class="icon-img-50">
+                                                    <img src="assets/images/1.png" alt="Support Icon">
+                                                </div>
+                                            </div>
+                                            <div class="cont ml-30">
+                                                <h6>Transparency & Support</h6>
+                                                <p class="fz-15">Our mission is to simplify the digital world by
+                                                    building impactful digital experiences focused on long-term client
+                                                    success.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ==================== End about ==================== -->
+
+                <!-- ==================== Start marq ==================== -->
+                <style> /* Tech Showcase Styles */
+                    .tech-showcase-section {
+                        background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+                        padding: 60px 0;
+                        position: relative;
+                        overflow: hidden;
+                        min-height: 80vh;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .tech-showcase-section::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        background: linear-gradient(90deg, transparent, #333, transparent);
+                    }
+
+                    .tech-showcase-section::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        background: linear-gradient(90deg, transparent, #333, transparent);
+                    }
+
+                    .tech-showcase-header {
+                        text-align: center;
+                        margin-bottom: 60px;
+                    }
+
+                    .tech-showcase-title {
+                        font-size: 48px;
+                        font-weight: 700;
+                        color: #fff;
+                        margin-bottom: 15px;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                    }
+
+                    .tech-showcase-subtitle {
+                        font-size: 18px;
+                        color: #888;
+                        font-weight: 300;
+                    }
+
+                    .tech-marquee-row {
+                        position: relative;
+                        margin-bottom: 10px;
+                        overflow: hidden;
+                    }
+
+                    .tech-marquee-row::before,
+                    .tech-marquee-row::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        width: 150px;
+                        z-index: 2;
+                        pointer-events: none;
+                    }
+
+                    .tech-marquee-row::before {
+                        left: 0;
+                        background: linear-gradient(90deg, #0a0a0a 0%, transparent 100%);
+                    }
+
+                    .tech-marquee-row::after {
+                        right: 0;
+                        background: linear-gradient(270deg, #0a0a0a 0%, transparent 100%);
+                    }
+
+                    .tech-marquee-track {
+                        display: flex;
+                        overflow: visible;
+                        user-select: none;
+                        padding: 30px 10px !important;
+                    }
+
+                    .tech-marquee-content {
+                        display: flex;
+                        animation: tech-scroll-left 35s linear infinite;
+                        will-change: transform;
+                    }
+
+                    .tech-marquee-content.tech-reverse {
+                        animation: tech-scroll-right 35s linear infinite;
+                    }
+
+                    .tech-card-item {
+                        flex: 0 0 auto;
+                        margin: 0 25px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 30px 45px;
+                        background: rgba(255, 255, 255, 0.03);
+                        border: 1px solid rgba(255, 255, 255, 0.08);
+                        border-radius: 20px;
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        backdrop-filter: blur(10px);
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                        min-width: 220px;
+                        height: 140px;
+                        position: relative;
+                    }
+
+                    .tech-card-item::before {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        border-radius: 20px;
+                        padding: 1px;
+                        background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+                        -webkit-mask-composite: xor;
+                        mask-composite: exclude;
+                        opacity: 0;
+                        transition: opacity 0.4s ease;
+                    }
+
+                    .tech-card-item:hover::before {
+                        opacity: 1;
+                    }
+
+                    .tech-card-item:hover {
+                        transform: translateY(-12px) scale(1.05);
+                        background: rgba(255, 255, 255, 0.06);
+                        border-color: rgba(255, 255, 255, 0.2);
+                        box-shadow: 0 16px 64px rgba(255, 255, 255, 0.15);
+                    }
+
+                    .tech-logo-img {
+                        max-height: 70px;
+                        max-width: 140px;
+                        width: auto;
+                        height: auto;
+                        object-fit: contain;
+                        filter: brightness(0.95) contrast(1.1);
+                        transition: all 0.4s ease;
+                        display: block;
+                    }
+
+                    .tech-card-item:hover .tech-logo-img {
+                        filter: brightness(1.2) contrast(1.3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+                        transform: scale(1.08);
+                    }
+
+                    @keyframes tech-scroll-left {
+                        0% {
+                            transform: translateX(0);
+                        }
+
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    @keyframes tech-scroll-right {
+                        0% {
+                            transform: translateX(-50%);
+                        }
+
+                        100% {
+                            transform: translateX(0);
+                        }
+                    }
+
+                    /* Responsive Design */
+                    @media (max-width: 768px) {
+                        .tech-showcase-title {
+                            font-size: 32px;
+                        }
+
+                        .tech-showcase-subtitle {
+                            font-size: 16px;
+                        }
+
+                        .tech-showcase-section {
+                            padding: 40px 0;
+                            min-height: 70vh;
+                        }
+
+                        .tech-showcase-header {
+                            margin-bottom: 40px;
+                        }
+
+                        .tech-marquee-row {
+                            margin-bottom: 30px;
+                        }
+
+                        .tech-card-item {
+                            margin: 0 15px;
+                            padding: 25px 35px;
+                            min-width: 180px;
+                            height: 120px;
+                        }
+
+                        .tech-logo-img {
+                            max-height: 55px;
+                            max-width: 110px;
+                        }
+
+                        .tech-marquee-row::before,
+                        .tech-marquee-row::after {
+                            width: 80px;
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .tech-showcase-title {
+                            font-size: 24px;
+                        }
+
+                        .tech-card-item {
+                            margin: 0 12px;
+                            padding: 20px 30px;
+                            min-width: 160px;
+                            height: 110px;
+                        }
+
+                        .tech-logo-img {
+                            max-height: 50px;
+                            max-width: 100px;
+                        }
+
+                        .tech-marquee-row::before,
+                        .tech-marquee-row::after {
+                            width: 50px;
+                        }
+                    }
+
+                    /* Pause animation on hover */
+                    .tech-marquee-track:hover .tech-marquee-content {
+                        animation-play-state: paused;
+                    }
+                </style>
+
+                <section class="tech-showcase-section">
+                    <div class="container-fluid">
+                        <div class="tech-showcase-header">
+                            <h2 class="tech-showcase-title">Technologies We Master</h2>
+                            <p class="tech-showcase-subtitle">Cutting-edge tools powering innovative solutions</p>
+                        </div>
+
+                        <!-- First Row - Left to Right -->
+                        <div class="tech-marquee-row">
+                            <div class="tech-marquee-track">
+                                <div class="tech-marquee-content">
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg"
+                                            alt="Node.js" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg"
+                                            alt="Angular" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+                                            alt="React" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-line.svg"
+                                            alt="Next.js" class="tech-logo-img"
+                                            style="filter: invert(1) brightness(0.95);">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+                                            alt="React Native" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg"
+                                            alt="Tailwind" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
+                                            alt="TypeScript" class="tech-logo-img">
+                                    </div>
+                                    <!-- Duplicate -->
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg"
+                                            alt="Node.js" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg"
+                                            alt="Angular" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+                                            alt="React" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-line.svg"
+                                            alt="Next.js" class="tech-logo-img"
+                                            style="filter: invert(1) brightness(0.95);">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+                                            alt="React Native" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg"
+                                            alt="Tailwind" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
+                                            alt="TypeScript" class="tech-logo-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Second Row - Right to Left -->
+                        <div class="tech-marquee-row">
+                            <div class="tech-marquee-track">
+                                <div class="tech-marquee-content tech-reverse">
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg"
+                                            alt="Bootstrap" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg"
+                                            alt="PHP" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/wordpress/wordpress-original.svg"
+                                            alt="WordPress" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://cdn.worldvectorlogo.com/logos/shopify.svg" alt="Shopify"
+                                            class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"
+                                            alt="MySQL" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg"
+                                            alt="MongoDB" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg"
+                                            alt="PostgreSQL" class="tech-logo-img">
+                                    </div>
+                                    <!-- Duplicate -->
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg"
+                                            alt="Bootstrap" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg"
+                                            alt="PHP" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/wordpress/wordpress-original.svg"
+                                            alt="WordPress" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://cdn.worldvectorlogo.com/logos/shopify.svg" alt="Shopify"
+                                            class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"
+                                            alt="MySQL" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg"
+                                            alt="MongoDB" class="tech-logo-img">
+                                    </div>
+                                    <div class="tech-card-item">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg"
+                                            alt="PostgreSQL" class="tech-logo-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ==================== End marq ==================== -->
+
+
+                <!-- ==================== Start Services Section ==================== -->
+                <section class="serv-box section-padding pb-0">
+                    <div class="container">
+                        <div class="sec-lg-head mb-80">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="position-re">
+                                        <h6 class="dot-titl-non mb-15 wow fadeIn">Featured Services</h6>
+                                        <h2 class="d-rotate wow">
+                                            <span class="rotate-text">Our Services</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 d-flex align-items-center">
+                                    <div class="text wow fadeIn">
+                                        <p>Empowering businesses with cutting-edge technology solutions that drive
+                                            growth and innovation in the digital landscape.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="serv-item lg-pad md-mb50 radius-5 wow fadeIn" data-wow-delay=".5s">
+                                    <div class="icon-img-50 mb-40">
+                                        <img src="assets/images/12.png" alt="Web Development">
+                                    </div>
+                                    <span class="mb-10 opacity-7">Custom Development</span>
+                                    <h6 class="mb-15">Web Development</h6>
+                                    <p class="fz-14">Build responsive, high-performance websites using modern frameworks
+                                        like React, Next.js, and Node.js tailored to your business needs.</p>
+                                    <div class="crv-more">
+                                        <a href="page-services.html" class="mt-30 ls1 fz-12 text-u">Read More<svg
+                                                width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.922 4.5V11.8125C13.922 11.9244 13.8776 12.0317 13.7985 12.1108C13.7193 12.1899 13.612 12.2344 13.5002 12.2344C13.3883 12.2344 13.281 12.1899 13.2018 12.1108C13.1227 12.0317 13.0783 11.9244 13.0783 11.8125V5.51953L4.79547 13.7953C4.71715 13.8736 4.61092 13.9176 4.50015 13.9176C4.38939 13.9176 4.28316 13.8736 4.20484 13.7953C4.12652 13.717 4.08252 13.6108 4.08252 13.5C4.08252 13.3892 4.12652 13.283 4.20484 13.2047L12.4806 4.92188H6.18765C6.07577 4.92188 5.96846 4.87743 5.88934 4.79831C5.81023 4.71919 5.76578 4.61189 5.76578 4.5C5.76578 4.38811 5.81023 4.28081 5.88934 4.20169C5.96846 4.12257 6.07577 4.07813 6.18765 4.07812H13.5002C13.612 4.07813 13.7193 4.12257 13.7985 4.20169C13.8776 4.28081 13.922 4.38811 13.922 4.5Z"
+                                                    fill="currentColor"></path>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="serv-item lg-pad md-mb50 radius-5 wow fadeIn" data-wow-delay=".8s">
+                                    <div class="icon-img-50 mb-40">
+                                        <img src="assets/images/10.png" alt="Application Development">
+                                    </div>
+                                    <span class="mb-10 opacity-7">Mobile & Desktop Solutions</span>
+                                    <h6 class="mb-15">App Development</h6>
+                                    <p class="fz-14">Create powerful native and cross-platform mobile applications with
+                                        React Native, delivering seamless user experiences across all devices.</p>
+                                    <div class="crv-more">
+                                        <a href="page-services.html" class="mt-30 ls1 fz-12 text-u">Read More<svg
+                                                width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.922 4.5V11.8125C13.922 11.9244 13.8776 12.0317 13.7985 12.1108C13.7193 12.1899 13.612 12.2344 13.5002 12.2344C13.3883 12.2344 13.281 12.1899 13.2018 12.1108C13.1227 12.0317 13.0783 11.9244 13.0783 11.8125V5.51953L4.79547 13.7953C4.71715 13.8736 4.61092 13.9176 4.50015 13.9176C4.38939 13.9176 4.28316 13.8736 4.20484 13.7953C4.12652 13.717 4.08252 13.6108 4.08252 13.5C4.08252 13.3892 4.12652 13.283 4.20484 13.2047L12.4806 4.92188H6.18765C6.07577 4.92188 5.96846 4.87743 5.88934 4.79831C5.81023 4.71919 5.76578 4.61189 5.76578 4.5C5.76578 4.38811 5.81023 4.28081 5.88934 4.20169C5.96846 4.12257 6.07577 4.07813 6.18765 4.07812H13.5002C13.612 4.07813 13.7193 4.12257 13.7985 4.20169C13.8776 4.28081 13.922 4.38811 13.922 4.5Z"
+                                                    fill="currentColor"></path>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="serv-item lg-pad radius-5 wow fadeIn" data-wow-delay="1.2s">
+                                    <div class="icon-img-50 mb-40">
+                                        <img src="assets/images/12.png" alt="Digital Marketing">
+                                    </div>
+                                    <span class="mb-10 opacity-7">Growth & Strategy</span>
+                                    <h6 class="mb-15">Digital Marketing</h6>
+                                    <p class="fz-14">Amplify your online presence with data-driven marketing strategies,
+                                        SEO optimization, and engaging content that converts visitors into customers.
+                                    </p>
+                                    <div class="crv-more">
+                                        <a href="page-services.html" class="mt-30 ls1 fz-12 text-u">Read More<svg
+                                                width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.922 4.5V11.8125C13.922 11.9244 13.8776 12.0317 13.7985 12.1108C13.7193 12.1899 13.612 12.2344 13.5002 12.2344C13.3883 12.2344 13.281 12.1899 13.2018 12.1108C13.1227 12.0317 13.0783 11.9244 13.0783 11.8125V5.51953L4.79547 13.7953C4.71715 13.8736 4.61092 13.9176 4.50015 13.9176C4.38939 13.9176 4.28316 13.8736 4.20484 13.7953C4.12652 13.717 4.08252 13.6108 4.08252 13.5C4.08252 13.3892 4.12652 13.283 4.20484 13.2047L12.4806 4.92188H6.18765C6.07577 4.92188 5.96846 4.87743 5.88934 4.79831C5.81023 4.71919 5.76578 4.61189 5.76578 4.5C5.76578 4.38811 5.81023 4.28081 5.88934 4.20169C5.96846 4.12257 6.07577 4.07813 6.18765 4.07812H13.5002C13.612 4.07813 13.7193 4.12257 13.7985 4.20169C13.8776 4.28081 13.922 4.38811 13.922 4.5Z"
+                                                    fill="currentColor"></path>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ==================== End Services Section ==================== -->
+
+
+                <!-- ==================== Start section ==================== -->
+                <section class="works thecontainer d-none" style="display: none !important;">
+
+                    <div class="panel mt-30">
+                        <div class="item">
+                            <div class="img">
+                                <img src="assets/images/21.jpg" alt="Website Development - Cloudrify Digital">
+                            </div>
+                            <div class="cont d-flex align-items-center align-items-end">
+                                <div>
+                                    <span>Website Development</span>
+                                    <h5>Corporate Website — Cloudrify Digital</h5>
+                                </div>
+                                <div class="ml-auto">
+                                    <h6>2024</h6>
+                                </div>
+                            </div>
+                            <a href="#0" class="link-overlay"></a>
+                        </div>
+                    </div>
+
+                    <div class="panel mt-30">
+                        <div class="item">
+                            <div class="img">
+                                <img src="assets/images/22.jpg" alt="Mobile App Development - Cloudrify Digital">
+                            </div>
+                            <div class="cont d-flex align-items-center align-items-end">
+                                <div>
+                                    <span>Mobile App</span>
+                                    <h5>On-Demand Booking App</h5>
+                                </div>
+                                <div class="ml-auto">
+                                    <h6>2024</h6>
+                                </div>
+                            </div>
+                            <a href="#0" class="link-overlay"></a>
+                        </div>
+                    </div>
+
+                    <div class="panel mt-30">
+                        <div class="item">
+                            <div class="img">
+                                <img src="assets/images/23.jpg" alt="E-commerce Platform - Cloudrify Digital">
+                            </div>
+                            <div class="cont d-flex align-items-center align-items-end">
+                                <div>
+                                    <span>E-commerce</span>
+                                    <h5>Custom E-commerce Platform</h5>
+                                </div>
+                                <div class="ml-auto">
+                                    <h6>2024</h6>
+                                </div>
+                            </div>
+                            <a href="#0" class="link-overlay"></a>
+                        </div>
+                    </div>  
+
+                </section>
+                <!-- ==================== End section ==================== -->
+
+                <!-- ==================== Start Projects Grid ==================== -->
+                <section class="projects-grid section-padding">
+                    <style>
+                        .projects-grid {
+                            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+                            padding: 80px 0;
+                            position: relative;
+                        }
+
+                        .projects-grid::before,
+                        .projects-grid::after {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            height: 1px;
+                            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+                        }
+
+                        .projects-grid::before { top: 0; }
+                        .projects-grid::after { bottom: 0; }
+
+                        .projects-grid .container {
+                            max-width: 1400px;
+                            margin: 0 auto;
+                            padding: 0 15px;
+                        }
+
+                        .projects-header {
+                            text-align: center;
+                            margin-bottom: 60px;
+                        }
+
+                        .projects-header h2 {
+                            font-size: 48px;
+                            font-weight: 700;
+                            color: #fff;
+                            margin-bottom: 20px;
+                        }
+
+                        .projects-header p {
+                            color: #888;
+                            font-size: 18px;
+                            max-width: 600px;
+                            margin: 0 auto;
+                        }
+
+                        .projects-grid-container {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                            gap: 30px;
+                            padding: 0 15px;
+                        }
+
+                        .project-card {
+                            background: rgba(255, 255, 255, 0.03);
+                            border: 1px solid rgba(255, 255, 255, 0.05);
+                            border-radius: 20px;
+                            overflow: hidden;
+                            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                            position: relative;
+                        }
+
+                        .project-card:hover {
+                            transform: translateY(-10px);
+                            border-color: rgba(255, 255, 255, 0.1);
+                            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+                        }
+
+                        .project-card::before {
+                            content: '';
+                            position: absolute;
+                            inset: 0;
+                            border-radius: 20px;
+                            padding: 1px;
+                            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), transparent);
+                            -webkit-mask-composite: xor;
+                            mask-composite: exclude;
+                            opacity: 0;
+                            transition: opacity 0.4s ease;
+                        }
+
+                        .project-card:hover::before {
+                            opacity: 1;
+                        }
+
+                        .project-image {
+                            position: relative;
+                            padding-top: 66.67%;
+                            overflow: hidden;
+                        }
+
+                        .project-image img {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                        }
+
+                        .project-card:hover .project-image img {
+                            transform: scale(1.1);
+                        }
+
+                        .project-content {
+                            padding: 25px;
+                        }
+
+                        .project-type {
+                            color: #888;
+                            font-size: 14px;
+                            text-transform: uppercase;
+                            letter-spacing: 2px;
+                            margin-bottom: 10px;
+                        }
+
+                        .project-title {
+                            color: #fff;
+                            font-size: 24px;
+                            font-weight: 600;
+                            margin-bottom: 15px;
+                            line-height: 1.3;
+                        }
+
+                        .project-meta {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-top: 20px;
+                            padding-top: 20px;
+                            border-top: 1px solid rgba(255, 255, 255, 0.05);
+                        }
+
+                        .project-year {
+                            color: #888;
+                            font-size: 14px;
+                        }
+
+                        .project-link {
+                            color: #fff;
+                            text-decoration: none;
+                            position: absolute;
+                            inset: 0;
+                            z-index: 1;
+                        }
+
+                        @media (max-width: 768px) {
+                            .projects-header h2 {
+                                font-size: 36px;
+                            }
+
+                            .projects-grid-container {
+                                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                                gap: 20px;
+                            }
+
+                            .project-title {
+                                font-size: 20px;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .projects-header h2 {
+                                font-size: 28px;
+                            }
+
+                            .projects-header p {
+                                font-size: 16px;
+                            }
+
+                            .project-content {
+                                padding: 20px;
+                            }
+                        }
+                    </style>
+
+                    <div class="container">
+                        <div class="projects-header">
+                            <h2>Our Featured Projects</h2>
+                            <p>Discover our innovative solutions and successful implementations</p>
+                        </div>
+
+                        <div class="projects-grid-container">
+                            <!-- Project Card 1 -->
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="assets/images/21.jpg" alt="Website Development - Cloudrify Digital">
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-type">Website Development</div>
+                                    <h3 class="project-title">Corporate Website — Cloudrify Digital</h3>
+                                    <div class="project-meta">
+                                        <div class="project-year">2024</div>
+                                    </div>
+                                </div>
+                                <a href="#0" class="project-link" aria-label="View Project"></a>
+                            </div>
+
+                            <!-- Project Card 2 -->
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="assets/images/22.jpg" alt="Mobile App Development - Cloudrify Digital">
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-type">Mobile App</div>
+                                    <h3 class="project-title">On-Demand Booking App</h3>
+                                    <div class="project-meta">
+                                        <div class="project-year">2024</div>
+                                    </div>
+                                </div>
+                                <a href="#0" class="project-link" aria-label="View Project"></a>
+                            </div>
+
+                            <!-- Project Card 3 -->
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="assets/images/23.jpg" alt="E-commerce Platform - Cloudrify Digital">
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-type">E-commerce</div>
+                                    <h3 class="project-title">Custom E-commerce Platform</h3>
+                                    <div class="project-meta">
+                                        <div class="project-year">2024</div>
+                                    </div>
+                                </div>
+                                <a href="#0" class="project-link" aria-label="View Project"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ==================== End Projects Grid ==================== -->
+
+                <!-- ==================== Start testimonails ==================== -->
+                <section class="testim-crv2 section-padding sub-bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="sec-lg-head mb-80">
+                                    <div class="position-re text-center">
+                                        <h6 class="dot-titl-non mb-15 wow fadeIn">Testimonials</h6>
+                                        <h2 class="d-rotate wow">
+                                            <span class="rotate-text">What People Says?</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- left quote + decorative image -->
+                            <div class="col-lg-5 position-re wow fadeIn" data-wow-delay=".4s">
+                                <div class="bord-qoute d-flex align-items-center justify-content-center">
+                                    <div class="qoute-icon main-bg">
+                                        <img src="assets/imgs/svg-assets/quote.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="img-qoute">
+                                    <img src="assets/imgs/about/sq1.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <!-- testimonials carousel -->
+                            <div class="col-lg-7 wow fadeIn" data-wow-delay=".4s">
+                                <div class="testim-swiper" data-carousel="swiper" data-items="1" data-loop="true"
+                                    data-space="30">
+                                    <div id="content-carousel-container-unq-testim" class="swiper-container"
+                                        data-swiper="container">
+                                        <div class="swiper-wrapper">
+
+                                            <!-- Testimonial 1 -->
+                                            <div class="swiper-slide">
+                                                <div class="item">
+                                                    <div class="cont mb-40">
+                                                        <div class="rate-stars mb-20 fz-16">
+                                                            <span class="rate main-color4">
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </span>
+                                                        </div>
+
+                                                        <h5 class="fw-400">
+                                                            Cloudrify Digital rebuilt our corporate website and improved
+                                                            load time,
+                                                            accessibility and conversions. The team communicated
+                                                            clearly, delivered
+                                                            ahead of schedule and guided us through every design
+                                                            decision. Our lead
+                                                            generation doubled within two months — extremely satisfied
+                                                            with the
+                                                            result.
+                                                        </h5>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="img circle-60">
+                                                                <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                                                                    alt="Client photo" class="circle-img" width="60"
+                                                                    height="60">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ml-30">
+                                                            <div class="info">
+                                                                <h6 class="fz-16">Markus Reinhardt</h6>
+                                                                <span class="opacity-7 sub-title">Head of Marketing —
+                                                                    Veritas Solutions</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Testimonial 2 -->
+                                            <div class="swiper-slide">
+                                                <div class="item">
+                                                    <div class="cont mb-40">
+                                                        <div class="rate-stars mb-20 fz-16">
+                                                            <span class="rate main-color4">
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </span>
+                                                        </div>
+
+                                                        <h5 class="fw-400">
+                                                            We hired Cloudrify to build a cross-platform booking app.
+                                                            The UX is
+                                                            intuitive, performance is excellent and the payments
+                                                            integration was
+                                                            flawless. Their post-launch support and QA saved us a lot of
+                                                            time —
+                                                            highly recommended for complex app work.
+                                                        </h5>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="img circle-60">
+                                                                <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                                                                    alt="Client photo" class="circle-img" width="60"
+                                                                    height="60">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ml-30">
+                                                            <div class="info">
+                                                                <h6 class="fz-16">Sofia Larsen</h6>
+                                                                <span class="opacity-7 sub-title">Product Manager —
+                                                                    DineNow</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Testimonial 3 -->
+                                            <div class="swiper-slide">
+                                                <div class="item">
+                                                    <div class="cont mb-40">
+                                                        <div class="rate-stars mb-20 fz-16">
+                                                            <span class="rate main-color4">
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </span>
+                                                        </div>
+
+                                                        <h5 class="fw-400">
+                                                            Their digital marketing campaign increased our organic
+                                                            search traffic by
+                                                            70% in four months. The SEO team provided clear reporting
+                                                            and practical
+                                                            on-site fixes. The combination of technical SEO and targeted
+                                                            ads gave us
+                                                            measurable growth and better ROI.
+                                                        </h5>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="img circle-60">
+                                                                <img src="https://randomuser.me/api/portraits/men/56.jpg"
+                                                                    alt="Client photo" class="circle-img" width="60"
+                                                                    height="60">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ml-30">
+                                                            <div class="info">
+                                                                <h6 class="fz-16">Ethan Walker</h6>
+                                                                <span class="opacity-7 sub-title">Founder — Northbay
+                                                                    Retail</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Testimonial 4 (optional) -->
+                                            <div class="swiper-slide">
+                                                <div class="item">
+                                                    <div class="cont mb-40">
+                                                        <div class="rate-stars mb-20 fz-16">
+                                                            <span class="rate main-color4">
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </span>
+                                                        </div>
+
+                                                        <h5 class="fw-400">
+                                                            Cloudrify handled our end-to-end e-commerce migration with
+                                                            minimal
+                                                            downtime and clear planning. Sales recovered quickly and
+                                                            user feedback
+                                                            about the checkout experience improved noticeably. Great
+                                                            project
+                                                            management and execution.
+                                                        </h5>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="img circle-60">
+                                                                <img src="https://randomuser.me/api/portraits/women/68.jpg"
+                                                                    alt="Client photo" class="circle-img" width="60"
+                                                                    height="60">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ml-30">
+                                                            <div class="info">
+                                                                <h6 class="fz-16">Amelia Porter</h6>
+                                                                <span class="opacity-7 sub-title">COO — Lumen
+                                                                    Market</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div> <!-- /.swiper-wrapper -->
+                                    </div> <!-- /#content-carousel-container-unq-testim -->
+                                </div> <!-- /.testim-swiper -->
+
+                                <div class="d-flex">
+                                    <div class="swiper-controls testim-controls arrow-out d-flex ml-auto">
+                                        <div class="swiper-button-prev">
+                                            <span class="left">
+                                                <!-- left arrow svg kept as-is -->
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M17.2031 10.3281L11.5781 15.9531C11.535 15.9961 11.4839 16.0303 11.4276 16.0536C11.3713 16.077 11.3109 16.089 11.25 16.089C11.1891 16.089 11.1287 16.077 11.0724 16.0536C11.0161 16.0303 10.965 15.9961 10.9219 15.9531C10.8788 15.91 10.8446 15.8588 10.8213 15.8025C10.798 15.7462 10.786 15.6859 10.786 15.6249C10.786 15.564 10.798 15.5036 10.8213 15.4473C10.8446 15.391 10.8788 15.3399 10.9219 15.2968L15.7422 10.4687H3.125C3.00068 10.4687 2.88145 10.4193 2.79354 10.3314C2.70564 10.2435 2.65625 10.1242 2.65625 9.99993C2.65625 9.87561 2.70564 9.75638 2.79354 9.66847C2.88145 9.58056 3.00068 9.53118 3.125 9.53118H15.7422L10.9219 4.70305C10.8349 4.61603 10.786 4.498 10.786 4.37493C10.786 4.25186 10.8349 4.13383 10.9219 4.0468C11.0089 3.95978 11.1269 3.91089 11.25 3.91089C11.3731 3.91089 11.4911 3.95978 11.5781 4.0468L17.2031 9.6718C17.2476 9.71412 17.2829 9.76503 17.3071 9.82143C17.3313 9.87784 17.3438 9.93856 17.3438 9.99993C17.3438 10.0613 17.3313 10.122 17.3071 10.1784C17.2829 10.2348 17.2476 10.2857 17.2031 10.3281Z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="swiper-button-next ml-50">
+                                            <span class="right">
+                                                <!-- right arrow svg kept as-is -->
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M17.2031 10.3281L11.5781 15.9531C11.535 15.9961 11.4839 16.0303 11.4276 16.0536C11.3713 16.077 11.3109 16.089 11.25 16.089C11.1891 16.089 11.1287 16.077 11.0724 16.0536C11.0161 16.0303 10.965 15.9961 10.9219 15.9531C10.8788 15.91 10.8446 15.8588 10.8213 15.8025C10.798 15.7462 10.786 15.6859 10.786 15.6249C10.786 15.564 10.798 15.5036 10.8213 15.4473C10.8446 15.391 10.8788 15.3399 10.9219 15.2968L15.7422 10.4687H3.125C3.00068 10.4687 2.88145 10.4193 2.79354 10.3314C2.70564 10.2435 2.65625 10.1242 2.65625 9.99993C2.65625 9.87561 2.70564 9.75638 2.79354 9.66847C2.88145 9.58056 3.00068 9.53118 3.125 9.53118H15.7422L10.9219 4.70305C10.8349 4.61603 10.786 4.498 10.786 4.37493C10.786 4.25186 10.8349 4.13383 10.9219 4.0468C11.0089 3.95978 11.1269 3.91089 11.25 3.91089C11.3731 3.91089 11.4911 3.95978 11.5781 4.0468L17.2031 9.6718C17.2476 9.71412 17.2829 9.76503 17.3071 9.82143C17.3313 9.87784 17.3438 9.93856 17.3438 9.99993C17.3438 10.0613 17.3313 10.122 17.3071 10.1784C17.2829 10.2348 17.2476 10.2857 17.2031 10.3281Z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- /.col-lg-7 -->
+                        </div> <!-- /.row -->
+
+                        <!-- Numbers / Key stats (kept but content refined) -->
+                        <div class="numbers mt-80 pt-80 bord-thin-top wow fadeIn" data-wow-delay=".4s">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="item md-mb50">
+                                        <h2 class="fw-800 stroke">8</h2>
+                                        <h6>Years of Experience</h6>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 d-flex justify-content-around">
+                                    <div class="item md-mb50">
+                                        <h2 class="fw-800">1<span class="fz-80 fw-600">.2k</span></h2>
+                                        <h6>Projects Completed</h6>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 d-flex justify-content-around">
+                                    <div class="item sm-mb50">
+                                        <h2 class="fw-800 stroke">5<span class="fz-80 fw-600">k</span></h2>
+                                        <h6>Happy Customers</h6>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 d-flex">
+                                    <div class="item ml-auto">
+                                        <h2 class="fw-800">98<span class="fz-20 fw-600">%</span></h2>
+                                        <h6>Delivery Rate</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ==================== End testimonails ==================== -->
+            </main>
+
+            <!-- ==================== Start Call to Action ==================== -->
+            <section class="call-action-center section-padding position-re sub-bg">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="sec-lg-head text-center">
+                                <h2 class="d-slideup wow fz-70 fw-700">
+                                    <span class="sideup-text">
+                                        <span class="up-text">Have a project in mind?</span>
+                                    </span>
+                                    <span class="sideup-text">
+                                        <span class="up-text underline"><a href="contact-us.html" class="main-color">Let’s
+                                            get to work.</a></span>
+                                    </span>
+                                </h2>
+                                <a href="contact-us.html"
+                                    class="butn-circle colorbg-2 d-flex align-items-center text-center mt-50 m-auto">
+                                    <div class="full-width">
+                                        <span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.922 4.5V11.8125C13.922 11.9244 13.8776 12.0317 13.7985 12.1108C13.7193 12.1899 13.612 12.2344 13.5002 12.2344C13.3883 12.2344 13.281 12.1899 13.2018 12.1108C13.1227 12.0317 13.0783 11.9244 13.0783 11.8125V5.51953L4.79547 13.7953C4.71715 13.8736 4.61092 13.9176 4.50015 13.9176C4.38939 13.9176 4.28316 13.8736 4.20484 13.7953C4.12652 13.717 4.08252 13.6108 4.08252 13.5C4.08252 13.3892 4.12652 13.283 4.20484 13.2047L12.4806 4.92188H6.18765C6.07577 4.92188 5.96846 4.87743 5.88934 4.79831C5.81023 4.71919 5.76578 4.61189 5.76578 4.5C5.76578 4.38811 5.81023 4.28081 5.88934 4.20169C5.96846 4.12257 6.07577 4.07813 6.18765 4.07812H13.5002C13.612 4.07813 13.7193 4.12257 13.7985 4.20169C13.8776 4.28081 13.922 4.38811 13.922 4.5Z"
+                                                    fill="currentColor"></path>
+                                            </svg></span>
+                                        <span class="full-width">Get In Touch</span>
+                                    </div>
+                                    <img src="assets/imgs/svg-assets/circle-star.svg" alt="" class="circle-star">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-pattern bg-img" data-background="assets/imgs/patterns/graph.png"></div>
+            </section>
+            <!-- ==================== End Call to Action ==================== -->
+
+            <!-- ==================== Start Footer ==================== -->
+
+            <footer class="sub-bg">
+                <div class="footer-container">
+                    <div class="container pb-80 pt-80 ontop">
+                        <div class="call-box text-center mb-80">
+                            <h2>
+                                <a href="page-contact.html">Let's <span class="stroke"> Discuss</span></a>
+                                <span class="arrow">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.922 4.5V11.8125C13.922 11.9244 13.8776 12.0317 13.7985 12.1108C13.7193 12.1899 13.612 12.2344 13.5002 12.2344C13.3883 12.2344 13.281 12.1899 13.2018 12.1108C13.1227 12.0317 13.0783 11.9244 13.0783 11.8125V5.51953L4.79547 13.7953C4.71715 13.8736 4.61092 13.9176 4.50015 13.9176C4.38939 13.9176 4.28316 13.8736 4.20484 13.7953C4.12652 13.717 4.08252 13.6108 4.08252 13.5C4.08252 13.3892 4.12652 13.283 4.20484 13.2047L12.4806 4.92188H6.18765C6.07577 4.92188 5.96846 4.87743 5.88934 4.79831C5.81023 4.71919 5.76578 4.61189 5.76578 4.5C5.76578 4.38811 5.81023 4.28081 5.88934 4.20169C5.96846 4.12257 6.07577 4.07813 6.18765 4.07812H13.5002C13.612 4.07813 13.7193 4.12257 13.7985 4.20169C13.8776 4.28081 13.922 4.38811 13.922 4.5Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="colum md-mb50">
+                                    <div class="tit mb-20">
+                                        <h6>Address</h6>
+                                    </div>
+                                    <div class="text">
+                                        <p>Germany — 785 15h Street, Office 478 Berlin, De 81566</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 offset-lg-1">
+                                <div class="colum md-mb50">
+                                    <div class="tit mb-20">
+                                        <h6>Say Hello</h6>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-10">
+                                            <a href="#0">info@cloudrifydigital.com</a>
+                                        </p>
+                                        <h5>
+                                            <a href="#">+91 840 841 2559</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 md-mb50">
+                                <div class="tit mb-20">
+                                    <h6>Social</h6>
+                                </div>
+                                <ul class="rest social-text">
+                                    <li>
+                                        <a href="#0">Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a href="#0">Twitter</a>
+                                    </li>
+                                    <li>
+                                        <a href="#0">LinkedIn</a>
+                                    </li>
+                                    <li>
+                                        <a href="#0">Instagram</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="tit mb-20">
+                                    <h6>Newsletter</h6>
+                                </div>
+                                <div class="subscribe">
+                                    <form action="https://uithemez.com/i/geekfolio/dark/contact.php">
+                                        <div class="form-group rest">
+                                            <input type="email" placeholder="Type Your Email">
+                                            <button type="submit">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sub-footer pt-40 pb-40 bord-thin-top ontop">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="logo">
+                                        <a href="#">
+                                            <img src="assets/images/logo-cloud.png" class="w-75" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="copyright d-flex">
+                                        <div class="ml-auto">
+                                            <p class="fz-13">© 2025 Cloudrify Digital is Proudly Powered by <span
+                                                    class="underline"><a href="https://codeiing.com"
+                                                        target="_blank">Codeiing</a></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- ==================== End Footer ==================== -->
+        </div>
+    </div>
+
+    <!-- ==================== Start Contact FABs ==================== -->
+    <div class="contact-fab-container">
+        <a href="https://wa.me/918408412569" class="contact-fab whatsapp" target="_blank" rel="noopener noreferrer"
+            aria-label="Contact us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:info@cloudrifydigital.com" class="contact-fab email" aria-label="Email us">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+    <!-- ==================== End Contact FABs ==================== -->
+
+    <!-- ==================== Start Tawk.to Chat FAB ==================== -->
+    <div class="tawk-fab-container">
+        <div class="tawk-fab" onclick="Tawk_API.toggle()" aria-label="Open Live Chat">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+    </div>
+    <!-- ==================== End Tawk.to Chat FAB ==================== -->
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.4.0.min.js"></script>
+
+    <!-- plugins -->
+    <script src="assets/js/plugins.js"></script>
+
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollSmoother.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/hscroll.js"></script>
+    <script src="assets/js/smoother-script.js"></script>
+
+    <!-- custom scripts -->
+    <script src="assets/js/scripts.js"></script>
+
+    <!--Start of Tawk.to Script-->
+    <script>
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            // IMPORTANT: Replace the URL below with your actual Tawk.to widget URL
+            s1.src = 'https://embed.tawk.to/YOUR_PROPERTY_ID/YOUR_WIDGET_ID';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- Mobile Slider for Works Section -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.innerWidth < 992) {
+                var worksSlider = new Swiper('.works.thecontainer', {
+                    slidesPerView: 1.2,
+                    spaceBetween: 30,
+                    centeredSlides: true,
+                    loop: true,
+                    autoplay: { delay: 4000, disableOnInteraction: false },
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
