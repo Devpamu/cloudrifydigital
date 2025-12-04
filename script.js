@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Premium Preloader Logic
+    const preloader = document.querySelector('.preloader');
+    const progressBar = document.querySelector('.loader-progress-bar');
+    const percentage = document.querySelector('.loader-percentage');
+
+    if (preloader) {
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 5;
+            if (progress > 100) progress = 100;
+
+            if (progressBar) progressBar.style.width = `${progress}%`;
+            if (percentage) percentage.textContent = `${Math.floor(progress)}%`;
+
+            if (progress === 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                    // Optional: Trigger other entrance animations here
+                }, 500);
+            }
+        }, 30); // Adjust speed here
+    }
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -34,10 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    entry.target.classList.add('fade-in-up');
-                }, index * 100); // Stagger effect
+                    entry.target.classList.add('aos-visible');
+                }, index * 100);
                 observer.unobserve(entry.target);
             }
         });
@@ -45,15 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animate elements on scroll
     const animatedElements = document.querySelectorAll(
-        '.service-card, .project-card, .testimonial-card, .about-text, .stats-card, .faq-item, .service-card, .exp-item'
+        '.service-card, .project-card, .testimonial-card, .about-text, .stats-card, .faq-item, .exp-item'
     );
-    
-    animatedElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+
+    animatedElements.forEach((el) => {
+        el.classList.add('aos-animate');
         observer.observe(el);
     });
+
+    document.body.classList.add('aos-ready');
 
     // Counter Animation for Stats
     const animateCounter = (element, target, duration = 2000) => {
@@ -95,10 +117,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parallax Effect for Hero Background
     const heroBg = document.querySelector('.hero-bg');
     if (heroBg) {
-        window.addEventListener('scroll', () => {
+        const handleParallax = () => {
             const scrolled = window.pageYOffset;
             heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-        });
+        };
+
+        let parallaxActive = false;
+
+        const syncParallaxState = () => {
+            if (window.innerWidth > 768) {
+                if (!parallaxActive) {
+                    window.addEventListener('scroll', handleParallax);
+                    parallaxActive = true;
+                    handleParallax();
+                }
+            } else if (parallaxActive) {
+                window.removeEventListener('scroll', handleParallax);
+                parallaxActive = false;
+                heroBg.style.transform = '';
+            }
+        };
+
+        syncParallaxState();
+        window.addEventListener('resize', syncParallaxState);
     }
 
     // Enhanced FAQ Accordion with smooth animation
@@ -155,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerY = rect.height / 2;
             const rotateX = (y - centerY) / 10;
             const rotateY = (centerX - x) / 10;
-            
+
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
         });
 
@@ -206,12 +247,4 @@ document.addEventListener('DOMContentLoaded', () => {
         marqueeObserver.observe(marquee);
     }
 
-    // Add loading animation
-    window.addEventListener('load', () => {
-        document.body.style.opacity = '0';
-        setTimeout(() => {
-            document.body.style.transition = 'opacity 0.5s ease-in';
-            document.body.style.opacity = '1';
-        }, 100);
-    });
 });

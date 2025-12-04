@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CLOUDRIFY -A Premium Agency</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,6 +15,19 @@
 </head>
 
 <body>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="ph-fill ph-squares-four"></i> CLOUDRIFY
+            </div>
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar"></div>
+            </div>
+            <div class="loader-percentage">0%</div>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -34,15 +48,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg">
-            <img src="assets/hero-bg.png" alt="Abstract Background">
+            <img src="hero-bg.png" alt="Abstract Background">
         </div>
         <div class="hero-content">
             <div class="pill-label">
                 <span class="dot"></span> Building Modern Digital Solutions
             </div>
             <h1>Websites that you<br>need Indeed</h1>
-            <p>Elevate your business with custom websites and digital solutions. Showcase your<br>story through modern web design
-                and strategic development solutions.</p>
+            <p>Elevate your business with custom websites and digital solutions.</p>
             <div class="hero-buttons">
                 <a href="#" class="btn-outline">Get Started Now</a>
                 <a href="#projects" class="btn-outline">See Projects</a>
@@ -108,22 +121,26 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
+        <div class="project-feature">
+            <img src="project-3.png" alt="About highlight image">
+            <div class="center-pill">About Me</div>
+        </div>
         <div class="project-grid">
             <div class="project-column column-left">
                 <div class="project-card">
-                    <img src="assets/project-1.png" alt="Branding device project">
+                    <img src="project-1.png" alt="Branding device project">
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card tall">
-                    <img src="assets/project-2.png" alt="Packaging exploration">
+                    <img src="project-2.png" alt="Packaging exploration">
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="assets/project-3.png" alt="Product mockup board">
+                    <img src="project-3.png" alt="Product mockup board">
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
@@ -132,20 +149,20 @@
 
             <div class="project-column column-center">
                 <div class="project-card hero-card">
-                    <img src="assets/project-3.png" alt="Profile highlight">
+                    <img src="project-3.png" alt="Profile highlight">
                     <div class="center-pill">About Me</div>
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card tall">
-                    <img src="assets/project-4.png" alt="Minimal product concept">
+                    <img src="project-4.png" alt="Minimal product concept">
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="assets/project-1.png" alt="Creative prototype">
+                    <img src="project-1.png" alt="Creative prototype">
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
@@ -154,19 +171,19 @@
 
             <div class="project-column column-right">
                 <div class="project-card">
-                    <img src="assets/project-4.png" alt="Beauty packaging">
+                    <img src="project-4.png" alt="Beauty packaging">
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card tall">
-                    <img src="assets/project-2.png" alt="Product detail shot">
+                    <img src="project-2.png" alt="Product detail shot">
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="assets/project-3.png" alt="Brand story board">
+                    <img src="project-3.png" alt="Brand story board">
                     <div class="project-overlay">
                         <a href="#" class="btn-glass-sm">View Casestudy <i class="ph ph-arrow-up-right"></i></a>
                     </div>
@@ -186,7 +203,9 @@
             <div class="about-text">
                 <div class="pill-label" style="width: fit-content;"><span class="dot"></span> About</div>
                 <h2 style="font-size: 3.9rem;">Introducing Cloudrify</h2>
-                <p style="font-size: 1.1rem;">We are Cloudrify, a passionate Web Development &amp; Digital Solutions agency based in Australia. We specialize in crafting modern websites and applications that captivate and inspire, blending creativity with technology to elevate businesses.</p>
+                <p style="font-size: 1.1rem;">We are Cloudrify, a passionate Web Development &amp; Digital Solutions
+                    agency based in Australia. We specialize in crafting modern websites and applications that captivate
+                    and inspire, blending creativity with technology to elevate businesses.</p>
                 <div class="slider-track">
                     <div class="slider-line"></div>
                     <div class="slider-dot"></div>
@@ -234,7 +253,7 @@
                 </div>
             </div>
             <div class="about-visual">
-                <img src="assets/project-3.png" alt="About portrait">
+                <img src="project-3.png" alt="About portrait">
                 <a href="#" class="floating-edit-btn btn-glass">⌘ Edit Portfolite</a>
             </div>
         </div>
@@ -242,7 +261,7 @@
 
 
 
-  
+
 
 
     <!-- Testimonials Section -->
@@ -250,10 +269,11 @@
         <div class="testimonial-header-container">
             <div class="testimonial-image-placeholder">
                 <!-- Image will be placed here -->
-                 <img src="assets/testinomial1.avif" alt="testinomial image" style="object-fit: contain;">
+                <img src="testinomial1.avif" alt="testinomial image" style="object-fit: contain;">
             </div>
             <div class="testimonial-header">
-                <div class="pill-label" style="width:fit-content;font-size: 1rem;"><span class="dot"></span> Reviews</div>
+                <div class="pill-label" style="width:fit-content;font-size: 1rem;"><span class="dot"></span> Reviews
+                </div>
                 <h2>Client Reviews</h2>
                 <p>Real feedback from clients who trusted my design expertise to elevate their brands successfully.</p>
                 <div class="testimonial-buttons">
@@ -268,15 +288,18 @@
                 <div class="testimonial-card">
                     <div class="client-info">
                         <div class="avatar-circle">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="June Lee">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
+                                alt="June Lee">
                         </div>
                         <div>
                             <h3>June Lee</h3>
                             <span>CEO of GreenRoots</span>
                         </div>
                     </div>
-                    <p>"Cloudrify's strategic approach to design brought our brand vision to life. The packaging and brand
-                        elements they developed elevated our aesthetic and aligned perfectly with our sustainability values."
+                    <p>"Cloudrify's strategic approach to design brought our brand vision to life. The packaging and
+                        brand
+                        elements they developed elevated our aesthetic and aligned perfectly with our sustainability
+                        values."
                     </p>
                     <div class="stars">
                         <span class="star-rating">
@@ -292,14 +315,16 @@
                 <div class="testimonial-card">
                     <div class="client-info">
                         <div class="avatar-circle">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Jona Carter">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                                alt="Jona Carter">
                         </div>
                         <div>
                             <h3>Jona Carter</h3>
                             <span>Founder of EcoLux</span>
                         </div>
                     </div>
-                    <p>"Every project Cloudrify touches turns to gold. The blend of design and purpose created a brand that
+                    <p>"Every project Cloudrify touches turns to gold. The blend of design and purpose created a brand
+                        that
                         reflected our eco-friendly mission and made our products stand out on the shelf."</p>
                     <div class="stars">
                         <span class="star-rating">
@@ -315,14 +340,16 @@
                 <div class="testimonial-card">
                     <div class="client-info">
                         <div class="avatar-circle">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Sarah Johnson">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                                alt="Sarah Johnson">
                         </div>
                         <div>
                             <h3>Sarah Johnson</h3>
                             <span>Creative Director</span>
                         </div>
                     </div>
-                    <p>"Working with Cloudrify was a seamless experience. Their functionality resulted in stunning designs that not only looked beautiful but also drove results. Highly recommended!"</p>
+                    <p>"Working with Cloudrify was a seamless experience. Their functionality resulted in stunning
+                        designs that not only looked beautiful but also drove results. Highly recommended!"</p>
                     <div class="stars">
                         <span class="star-rating">
                             <i class="ph-fill ph-star"></i>
@@ -338,15 +365,18 @@
                 <div class="testimonial-card">
                     <div class="client-info">
                         <div class="avatar-circle">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="June Lee">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
+                                alt="June Lee">
                         </div>
                         <div>
                             <h3>June Lee</h3>
                             <span>CEO of GreenRoots</span>
                         </div>
                     </div>
-                    <p>"Cloudrify's strategic approach to design brought our brand vision to life. The packaging and brand
-                        elements they developed elevated our aesthetic and aligned perfectly with our sustainability values."
+                    <p>"Cloudrify's strategic approach to design brought our brand vision to life. The packaging and
+                        brand
+                        elements they developed elevated our aesthetic and aligned perfectly with our sustainability
+                        values."
                     </p>
                     <div class="stars">
                         <span class="star-rating">
@@ -362,14 +392,16 @@
                 <div class="testimonial-card">
                     <div class="client-info">
                         <div class="avatar-circle">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Jona Carter">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                                alt="Jona Carter">
                         </div>
                         <div>
                             <h3>Jona Carter</h3>
                             <span>Founder of EcoLux</span>
                         </div>
                     </div>
-                    <p>"Every project Cloudrify touches turns to gold. The blend of design and purpose created a brand that
+                    <p>"Every project Cloudrify touches turns to gold. The blend of design and purpose created a brand
+                        that
                         reflected our eco-friendly mission and made our products stand out on the shelf."</p>
                     <div class="stars">
                         <span class="star-rating">
@@ -385,14 +417,16 @@
                 <div class="testimonial-card">
                     <div class="client-info">
                         <div class="avatar-circle">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Sarah Johnson">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                                alt="Sarah Johnson">
                         </div>
                         <div>
                             <h3>Sarah Johnson</h3>
                             <span>Creative Director</span>
                         </div>
                     </div>
-                    <p>"Working with Cloudrify was a seamless experience. Their functionality resulted in stunning designs that not only looked beautiful but also drove results. Highly recommended!"</p>
+                    <p>"Working with Cloudrify was a seamless experience. Their functionality resulted in stunning
+                        designs that not only looked beautiful but also drove results. Highly recommended!"</p>
                     <div class="stars">
                         <span class="star-rating">
                             <i class="ph-fill ph-star"></i>
@@ -409,15 +443,16 @@
     </section>
 
 
-      <!-- Services Section -->
-      <section id="services" class="services">
+    <!-- Services Section -->
+    <section id="services" class="services">
         <div class="services-container">
             <div class="services-text">
                 <div class="pill-label">
                     <i class="ph ph-circle-notch"></i> Design services
                 </div>
                 <h2>Services</h2>
-                <p class="section-desc">Helping businesses stand out with custom websites and digital solutions that captivate and
+                <p class="section-desc">Helping businesses stand out with custom websites and digital solutions that
+                    captivate and
                     convert effectively.</p>
 
                 <div class="service-tags">
@@ -434,18 +469,20 @@
                 </div>
             </div>
             <div class="services-image">
-                <img src="assets/service-img.png" alt="Services">
+                <img src="service-img.png" alt="Services">
             </div>
         </div>
 
         <div class="service-cards">
             <div class="service-card">
                 <div class="card-icon"><i class="ph ph-globe"></i> Web Development</div>
-                <p>Building responsive and modern websites that bring your business online, giving you a powerful digital presence that converts visitors into customers.</p>
+                <p>Building responsive and modern websites that bring your business online, giving you a powerful
+                    digital presence that converts visitors into customers.</p>
             </div>
             <div class="service-card">
                 <div class="card-icon"><i class="ph ph-device-mobile"></i> App Development</div>
-                <p>Creating custom mobile and web applications tailored to your business needs — because every feature matters when delivering exceptional user experiences.</p>
+                <p>Creating custom mobile and web applications tailored to your business needs — because every feature
+                    matters when delivering exceptional user experiences.</p>
             </div>
         </div>
 
@@ -504,7 +541,7 @@
         </div>
     </section>
 
-  
+
 
     <!-- FAQ Section -->
     <section class="faq">
@@ -514,7 +551,7 @@
                 <h2>Answers</h2>
                 <p>Find answers to common questions about my design process, services etc...</p>
                 <div class="faq-image">
-                    <img src="assets/faq-img.png" alt="FAQ Image">
+                    <img src="faq-img.png" alt="FAQ Image">
                 </div>
 
                 <div class="faq-tags">
@@ -585,7 +622,8 @@
                         <i class="ph ph-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Absolutely! We guide you through discovery, strategy, and execution to refresh your entire brand presence.</p>
+                        <p>Absolutely! We guide you through discovery, strategy, and execution to refresh your entire
+                            brand presence.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -594,10 +632,11 @@
                         <i class="ph ph-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we offer monthly retainers so you can request new assets, iterations, or campaign visuals as needed.</p>
+                        <p>Yes, we offer monthly retainers so you can request new assets, iterations, or campaign
+                            visuals as needed.</p>
                     </div>
                 </div>
-               
+
             </div>
         </div>
 
@@ -609,9 +648,11 @@
             <div class="contact-intro">
                 <div class="pill-label"><span class="dot"></span> Contact</div>
                 <h2>Let’s create something bold together.</h2>
-                <p>Share your vision, project scope, or even a rough idea. I’ll get back within 24 hours with next steps.</p>
+                <p>Share your vision, project scope, or even a rough idea. I’ll get back within 24 hours with next
+                    steps.</p>
                 <div class="contact-details">
-                    <a href="mailto:xyzabc@gmail.com" class="contact-link"><i class="ph ph-envelope-simple"></i> xyzabc@gmail.com</a>
+                    <a href="mailto:xyzabc@gmail.com" class="contact-link"><i class="ph ph-envelope-simple"></i>
+                        xyzabc@gmail.com</a>
                     <a href="tel:+911234567890" class="contact-link"><i class="ph ph-phone"></i> +91 123 456 7890</a>
                     <div class="contact-link"><i class="ph ph-map-pin"></i> Tokyo · Remote Worldwide</div>
                 </div>
@@ -653,9 +694,11 @@
                 </div>
                 <div class="form-group full">
                     <label for="message">Project Details</label>
-                    <textarea id="message" rows="4" placeholder="Tell me about the goals, timeline, and deliverables you have in mind."></textarea>
+                    <textarea id="message" rows="4"
+                        placeholder="Tell me about the goals, timeline, and deliverables you have in mind."></textarea>
                 </div>
-                <button type="submit" class="btn-outline send-btn">Send Brief <i class="ph ph-paper-plane-tilt"></i></button>
+                <button type="submit" class="btn-outline send-btn">Send Brief <i
+                        class="ph ph-paper-plane-tilt"></i></button>
             </form>
         </div>
     </section>
@@ -675,25 +718,25 @@
                 <a href="#"><i class="ph ph-linkedin-logo"></i></a>
             </div>
         </div>
-    
 
-    <!-- Footer -->
-    <footer class="footer"">
-        <div class="footer-content">
-            <div class="footer-left"   style="z-index: 11111;">
+
+        <!-- Footer -->
+        <footer class="footer"">
+        <div class=" footer-content">
+            <div class="footer-left" style="z-index: 11111;">
                 <a href="mailto:hello@framebase.design">xyzabc@gmail.com</a>
             </div>
-            <div class="footer-center"   style="z-index: 11111;">
+            <div class="footer-center" style="z-index: 11111;">
                 <span>Crafted by <a href="https://aditya16.vercel.app" class="underline"> Aditya</a></span>
             </div>
-            <div class="footer-right"   style="z-index: 11111;">
+            <div class="footer-right" style="z-index: 11111;">
                 <span>All rights reserved, ©2025</span>
             </div>
-        </div>
-    </footer>
-</section>
+            </div>
+        </footer>
+    </section>
 
-  
+
 
     <script src="script.js"></script>
 </body>
